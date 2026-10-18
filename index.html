@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Teses e Dissertações · Educação e Ensino | Catálogo CAPES</title>
+  <meta name="description" content="Busque entre 109 mil teses e dissertações brasileiras das áreas de avaliação Educação e Ensino. Resumos, metadados e link para o registro oficial no Catálogo de Teses e Dissertações da CAPES." />
+  <meta name="theme-color" content="#102448" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23102448'/%3E%3Cpath d='m16 6.4 2.34 6.2 6.62.28-5.2 4.1 1.8 6.39L16 19.6l-5.56 3.77 1.8-6.39-5.2-4.1 6.62-.28Z' fill='%23e57c2b'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/styles.css?v=20261018f" />
+</head>
+<body>
+  <a class="pular" href="#resultados">Pular para os resultados</a>
+
+  <header class="topo">
+    <div class="wrap topo-in">
+      <a class="marca" href="./">
+        <picture class="marca-logo">
+          <source srcset="assets/logo-512.webp" type="image/webp" />
+          <img src="assets/logo-512.png" alt="" width="512" height="512" />
+        </picture>
+        <span class="marca-txt">
+          <span class="marca-nome">Teses &amp; Dissertações</span>
+          <span class="marca-sub">Educação e Ensino</span>
+        </span>
+      </a>
+
+      <nav class="topo-nav" aria-label="Navegação principal">
+        <a href="#sobre">Sobre os dados</a>
+        <a class="topo-link" href="https://catalogodeteses.capes.gov.br/" target="_blank" rel="noopener">
+          Catálogo CAPES <span aria-hidden="true">↗</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap" aria-labelledby="titulo-hero">
+      <div class="hero-texto">
+        <p class="olho"><span class="olho-estrela" aria-hidden="true">★</span> Catálogo de Teses e Dissertações · CAPES</p>
+        <h1 id="titulo-hero">Teses e dissertações em <em>Educação</em> e <em>Ensino</em></h1>
+        <p class="linha-fina">
+          Busque trabalhos defendidos em programas de pós-graduação brasileiros e chegue ao
+          registro oficial de cada pesquisa. Os dados são públicos, atualizados pela CAPES e
+          consultados em tempo real.
+        </p>
+
+        <form id="form-busca" class="busca" role="search" autocomplete="off">
+          <svg class="busca-icone" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.7"/>
+            <path d="m16 16 4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+          <label class="sr-only" for="q">Buscar teses e dissertações</label>
+          <input id="q" name="q" type="search" placeholder="Tema, título, autor, palavra-chave…" spellcheck="false" />
+          <button type="submit" class="btn-buscar">
+            <span>Buscar</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 12h14m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </form>
+
+        <div class="busca-escopo">
+          <span class="busca-escopo-rotulo">Buscar em</span>
+          <div class="seg-escopo" role="group" aria-label="Campo da busca">
+            <button type="button" data-escopo="titulo,resumo" aria-pressed="true">título e resumo</button>
+            <button type="button" data-escopo="titulo" aria-pressed="false">só no título</button>
+            <button type="button" data-escopo="resumo" aria-pressed="false">só no resumo</button>
+          </div>
+          <label class="busca-exato">
+            <input type="checkbox" id="exato" />
+            termo exato
+          </label>
+        </div>
+
+        <div class="sugestoes" aria-label="Sugestões de busca">
+          <span class="sugestoes-rotulo">Experimente:</span>
+          <button type="button" data-q="educação inclusiva">educação inclusiva</button>
+          <button type="button" data-q="formação de professores">formação de professores</button>
+          <button type="button" data-q="ensino de matemática">ensino de matemática</button>
+        </div>
+      </div>
+
+      <div class="hero-selo-bloco">
+        <picture class="hero-selo">
+          <source srcset="assets/logo-512.webp" type="image/webp" />
+          <img src="assets/logo-512.png" alt="Selo do Buscador de Teses e Dissertações da CAPES — Educação e Ensino, com Darwin, um livro e uma lamparina" width="512" height="512" />
+        </picture>
+        <p class="hero-legenda">
+          <strong id="total-base">109.183</strong>
+          teses e dissertações
+          <span>1987–2024 · 663 instituições</span>
+        </p>
+      </div>
+    </section>
+
+    <div class="acervo wrap">
+      <aside class="filtros-col" aria-label="Filtros da busca">
+        <details class="filtros-painel" id="filtros-painel" open>
+          <summary class="filtros-resumo">
+            <span class="filtros-resumo-icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4 6h16M7 12h10m-7 6h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="filtros-resumo-txt">
+              <span class="filtros-resumo-titulo">Filtros</span>
+              <span class="filtros-resumo-dica">Área, ano, tipo e instituição</span>
+            </span>
+            <svg class="filtros-resumo-seta" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+
+          <div class="filtros-corpo">
+            <div class="filtros">
+              <div class="campo campo-area">
+                <span id="rotulo-area" class="campo-rotulo">Área de avaliação</span>
+                <div class="seg" role="group" aria-labelledby="rotulo-area">
+                  <button type="button" data-area="ambas" aria-pressed="true" title="Educação e Ensino">Ambas</button>
+                  <button type="button" data-area="EDUCAÇÃO" aria-pressed="false">Educação</button>
+                  <button type="button" data-area="ENSINO" aria-pressed="false">Ensino</button>
+                </div>
+              </div>
+
+              <div class="campo campo-ano">
+                <span class="campo-rotulo">Ano de defesa</span>
+                <div class="anos">
+                  <label class="sr-only" for="ano-de">Ano inicial</label>
+                  <select id="ano-de"><option value="">de</option></select>
+                  <span aria-hidden="true">–</span>
+                  <label class="sr-only" for="ano-ate">Ano final</label>
+                  <select id="ano-ate"><option value="">até</option></select>
+                </div>
+              </div>
+
+              <label class="campo" for="tipo">
+                <span class="campo-rotulo">Grau</span>
+                <select id="tipo">
+                  <option value="">Todos</option>
+                  <option value="MESTRADO">Mestrado</option>
+                  <option value="DOUTORADO">Doutorado</option>
+                  <option value="MESTRADO_PROFISSIONAL">Mestrado profissional</option>
+                  <option value="DOUTORADO_PROFISSIONAL">Doutorado profissional</option>
+                </select>
+              </label>
+
+              <div class="campo-duplo">
+                <label class="campo" for="uf">
+                  <span class="campo-rotulo">UF</span>
+                  <select id="uf">
+                    <option value="">Todas</option>
+                  </select>
+                </label>
+
+                <label class="campo" for="regiao">
+                  <span class="campo-rotulo">Região</span>
+                  <select id="regiao">
+                    <option value="">Todas</option>
+                  </select>
+                </label>
+              </div>
+
+              <label class="campo" for="dependencia">
+                <span class="campo-rotulo">Dependência</span>
+                <select id="dependencia">
+                  <option value="">Todas</option>
+                </select>
+              </label>
+
+              <label class="campo campo-ies" for="ies">
+                <span class="campo-rotulo">Instituição</span>
+                <input id="ies" list="lista-ies" placeholder="ex.: UFSC" spellcheck="false" />
+                <datalist id="lista-ies"></datalist>
+                <span class="campo-ajuda">Informe a sigla da instituição.</span>
+              </label>
+
+              <button type="button" id="limpar" class="limpar">Limpar filtros</button>
+            </div>
+            <p id="dica-ies" class="dica" hidden></p>
+          </div>
+        </details>
+      </aside>
+
+      <section id="resultados" class="resultados" aria-labelledby="titulo-resultados">
+        <div class="cabecalho-resultados">
+          <div class="cabecalho-txt">
+            <h2 id="titulo-resultados">Todos os trabalhos</h2>
+            <p id="subtitulo-resultados" class="subtitulo" aria-live="polite">Carregando o acervo…</p>
+          </div>
+          <button type="button" id="csv" class="btn-csv" aria-label="Baixar CSV" title="Baixar os resultados em planilha CSV">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 4v11m0 0 4-4m-4 4-4-4M5 19h14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Baixar CSV</span>
+          </button>
+        </div>
+
+        <div id="lista" class="lista"></div>
+
+        <div id="estado" class="estado" hidden></div>
+        <nav id="paginacao" class="paginacao" aria-label="Paginação" hidden></nav>
+      </section>
+    </div>
+  </main>
+
+  <footer id="sobre" class="rodape">
+    <div class="wrap rodape-grid">
+      <div class="rodape-sobre">
+        <div class="rodape-titulo">
+          <picture class="rodape-logo">
+            <source srcset="assets/logo-512.webp" type="image/webp" />
+            <img src="assets/logo-512.png" alt="" width="512" height="512" loading="lazy" />
+          </picture>
+          <h2>Sobre os dados</h2>
+        </div>
+        <p>
+          Esta ferramenta consulta, em tempo real, a API pública do
+          <a href="https://apigw-proxy.capes.gov.br/observatorio/documentacao?origem=catalogo&amp;path=producao" target="_blank" rel="noopener">Observatório da Pós-Graduação da CAPES</a>
+          e restringe os resultados às áreas de avaliação <strong>Educação</strong> e <strong>Ensino</strong>.
+          O acervo reúne <strong id="total-base-rodape">109.183</strong> teses e dissertações defendidas entre 1987 e 2024.
+        </p>
+        <p>
+          Títulos, resumos, autores e demais metadados são informados pelos próprios programas de
+          pós-graduação à CAPES. O botão <strong>PDF</strong> busca o anexo no registro antigo da
+          CAPES; sem autorização de divulgação, o anexo não existe. Cada cartão leva ao registro oficial no
+          <a href="https://catalogodeteses.capes.gov.br/" target="_blank" rel="noopener">Catálogo de Teses e Dissertações</a>,
+          onde está a versão integral do resumo.
+        </p>
+        <p class="aviso">
+          Projeto independente, sem vínculo institucional com a CAPES. Os dados são públicos e
+          estão disponíveis também em <a href="https://dadosabertos.capes.gov.br/" target="_blank" rel="noopener">dadosabertos.capes.gov.br</a>.
+        </p>
+      </div>
+
+      <div class="rodape-lado">
+        <h3>Como buscar</h3>
+        <ul>
+          <li>Use poucas palavras: <em>ensino médio</em>, <em>autismo</em>, <em>política curricular</em>.</li>
+          <li>Use <strong>Buscar em</strong> para restringir a pesquisa ao título ou ao resumo.</li>
+          <li>Marque <strong>termo exato</strong> (ou use aspas) para procurar a frase inteira.</li>
+          <li>A busca não diferencia maiúsculas de minúsculas; acentos podem ser omitidos.</li>
+          <li>Refine por ano, tipo e instituição nos filtros ao lado dos resultados.</li>
+        </ul>
+        <p class="rodape-nota">
+          A base é atualizada pela CAPES. Quando há busca textual, o catálogo não informa o total
+          exato de resultados — por isso a navegação por páginas aparece sem esse número.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <dialog id="detalhe" class="dialog" aria-labelledby="d-titulo">
+    <div class="dialog-card">
+      <div class="dialog-topo">
+        <div id="d-badges" class="d-badges"></div>
+        <button type="button" class="dialog-fechar" id="d-fechar" aria-label="Fechar detalhes">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <h2 id="d-titulo"></h2>
+      <p id="d-sub" class="d-sub"></p>
+
+      <dl id="d-meta" class="meta-grade"></dl>
+
+      <section class="d-secao">
+        <h3>Resumo</h3>
+        <p id="d-resumo" class="d-resumo"></p>
+      </section>
+
+      <section class="d-secao" id="d-palavras-secao" hidden>
+        <h3>Palavras-chave</h3>
+        <div id="d-palavras" class="d-palavras"></div>
+      </section>
+
+      <div class="d-acoes">
+        <a id="d-link" class="btn-primario" href="#" target="_blank" rel="noopener">
+          Abrir no catálogo da CAPES <span aria-hidden="true">↗</span>
+        </a>
+        <a id="d-pdf" class="btn-secundario" href="#" target="_blank" rel="noopener" hidden>Baixar PDF</a>
+        <button type="button" id="d-copiar" class="btn-secundario">Copiar citação</button>
+      </div>
+    </div>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <noscript>
+    <p class="noscript">Este site precisa de JavaScript para consultar o catálogo da CAPES.</p>
+  </noscript>
+
+  <script src="assets/ies.js?v=20261018f"></script>
+  <script src="assets/ui.js?v=20261018f"></script>
+  <script src="assets/app.js?v=20261018f" defer></script>
+</body>
+</html>
