@@ -12,6 +12,14 @@
 const API = 'https://apigw-proxy.capes.gov.br/observatorio';
 const LINK_CAPES = 'https://sucupira.capes.gov.br/observatorio/detalhamento/teses-e-dissertacoes/';
 
+const PDF_API = (() => {
+  const host = location.hostname;
+  const local = location.protocol === 'file:'
+    || host === 'localhost' || host === '127.0.0.1'
+    || host === '::1' || host === '[::1]';
+  return local ? '' : String(window.CAPES_PDF_API || '').replace(/\/$/, '');
+})();
+
 const POR_PAGINA = 15;
 const CONCORRENCIA = 6;   // detalhes buscados em paralelo
 const MAX_CSV = 300;      // linhas máximas da exportação
@@ -87,14 +95,14 @@ function urlPdf(item) {
     ano: String(item.anoBase || ''),
     ies: item.siglaIes || '',
   });
-  return '/api/pdf?' + parametros.toString();
+  return PDF_API + '/api/pdf?' + parametros.toString();
 }
 
 async function verificarPdfApi() {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), 1500);
   try {
-    const resposta = await fetch('/api/health', { cache: 'no-store', signal: ctrl.signal });
+    const resposta = await fetch(PDF_API + '/api/health', { cache: 'no-store', signal: ctrl.signal });
     if (!resposta.ok) return;
     const dados = await resposta.json();
     estado.pdfApi = Boolean(dados.ok);

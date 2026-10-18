@@ -104,14 +104,61 @@ O PDF é de responsabilidade da CAPES e dos programas; vale a legislação de di
 
 ## Como publicar
 
-O site é uma pasta estática. Qualquer hospedagem de arquivos funciona:
+### Cloudflare Pages (site)
 
-- **Netlify**: arraste a pasta `capes-educacao-ensino` para o painel (sem build) — o site
-  funciona, mas sem o botão PDF; para PDF é preciso publicar o `server.py` ou uma função.
-- **GitHub Pages**: publique o conteúdo da pasta na branch `gh-pages`.
-- **Cloudflare Pages / Vercel**: configure o diretório de saída como a raiz do projeto.
+O front-end é estático. No painel do Cloudflare Pages:
 
-Não é necessário configurar variáveis de ambiente.
+- **Build command:** nenhum (deixe vazio)
+- **Output directory:** `/` (a raiz do repositório)
+
+Ou, pelo terminal:
+
+```bash
+npx wrangler pages deploy .
+```
+
+O site funciona, mas o **PDF não**: o Pages não executa Python. Sem um servidor de PDF,
+o `/api/health` responde 404 e o botão de PDF simplesmente não aparece.
+
+### PDF no Render (recomendado com Cloudflare Pages)
+
+1. Crie um **Web Service** no Render apontando para este repositório.
+   O `render.yaml` já traz a configuração: runtime Python, `startCommand: python3 server.py`
+   e health check em `/api/health`.
+2. Copie a URL do serviço (ex.: `https://capes-eduensino-pdf.onrender.com`).
+3. Em `assets/config.js`, preencha:
+
+```js
+window.CAPES_PDF_API = 'https://capes-eduensino-pdf.onrender.com';
+```
+
+4. Publique o Pages novamente. O site continua no Cloudflare; só o PDF é resolvido no Render.
+
+O `server.py` também serve o site inteiro — a página de espera do PDF usa os assets
+(`/assets/...`) do próprio serviço. O plano gratuito do Render hiberna; a primeira consulta
+pode demorar para acordar.
+
+### Cloudflare Tunnel (tudo na sua máquina)
+
+Se quiser o site e o PDF no mesmo domínio, sem separar serviços:
+
+```bash
+python3 server.py
+cloudflared tunnel --url http://localhost:8765
+```
+
+Nesse caso deixe `window.CAPES_PDF_API = ''` em `assets/config.js`: o site usa o mesmo domínio
+para `/api/health` e `/api/pdf`. A máquina precisa ficar ligada com o servidor e o túnel no ar.
+
+### Outras hospedagens
+
+- **Netlify / GitHub Pages / Vercel**: funcionam para o site estático; para o PDF é preciso o
+  `server.py` em outro serviço e a URL em `assets/config.js`.
+- **Render/Fly sozinho**: publique o repositório inteiro; o `server.py` serve o site e o PDF
+  no mesmo domínio, sem precisar de `CAPES_PDF_API`.
+
+Não há variáveis de ambiente obrigatórias; a URL do PDF é configurada no arquivo
+`assets/config.js`.
 
 ## Fonte dos dados
 
@@ -142,8 +189,11 @@ assets/styles.css       todo o estilo (sem framework)
 assets/app.js           consulta, filtros, cartões, diálogo e CSV
 assets/ui.js            abre/fecha o painel de filtros conforme o breakpoint
 assets/ies.js           cadastro de IES, grupos de UF/região/dependência e programas
+assets/config.js        URL do serviço de PDF (Cloudflare Pages + Render/Tunnel)
 server.py               servidor local + resolução/download do PDF
 tools/build_ies.py      regenera assets/ies.js a partir da API
+render.yaml             configuração do Web Service no Render
+requirements.txt        sem dependências (biblioteca padrão)
 assets/logo-512.webp    selo em WebP (usado na interface)
 assets/logo-512.png     fallback do selo
 docs/                   capturas de tela usadas neste README

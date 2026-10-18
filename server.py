@@ -336,6 +336,7 @@ class Handler(SimpleHTTPRequestHandler):
         self.send_header('Content-Type', 'application/json; charset=utf-8')
         self.send_header('Content-Length', str(len(corpo)))
         self.send_header('Cache-Control', 'no-store')
+        self.send_header('Access-Control-Allow-Origin', '*')
         self.end_headers()
         self.wfile.write(corpo)
 
@@ -345,6 +346,7 @@ class Handler(SimpleHTTPRequestHandler):
         self.send_header('Content-Length', str(len(pdf)))
         self.send_header('Content-Disposition', f'inline; filename="{nome}"')
         self.send_header('Cache-Control', 'private, max-age=300')
+        self.send_header('Access-Control-Allow-Origin', '*')
         self.end_headers()
         self.wfile.write(pdf)
 
