@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Publica o site estático no Cloudflare Workers (Pages integrado).
+# Publica o site estático no Cloudflare Pages (projeto capesquisa).
 # Uso:
 #   ./scripts/deploy-cloudflare.sh
 #   CAPES_PDF_API='https://seu-servico.onrender.com' ./scripts/deploy-cloudflare.sh
@@ -27,14 +27,5 @@ open(caminho, 'w', encoding='utf-8').write(texto)
 PY
 fi
 
-cat > "$DIST/wrangler.jsonc" <<'JSON'
-{
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "capes-eduensino",
-  "compatibility_date": "2026-10-18",
-  "assets": { "directory": "./public" }
-}
-JSON
-
-echo "Publicando $DIST/public em capes-eduensino..."
-(cd "$DIST" && npx --yes wrangler deploy)
+echo "Publicando $DIST/public em capesquisa.pages.dev..."
+(cd "$DIST" && npx --yes wrangler pages deploy ./public --project-name=capesquisa --branch=main --commit-dirty=true)

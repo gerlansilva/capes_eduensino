@@ -9,7 +9,7 @@ Projeto independente de **Gerlan Silva da Silva** ([@gerlansilva](https://github
 doutorando em Educação no **Programa de Pós-Graduação em Educação (PPGE)** da
 **Universidade Federal de São Carlos (UFSCar)**. Não é um projeto oficial da CAPES nem da UFSCar.
 
-**Site publicado:** <https://capes-eduensino.gerlanmatfis.workers.dev>
+**Site publicado:** <https://capesquisa.pages.dev>
 
 A busca, os filtros e os cartões são **estáticos** (HTML + CSS + JavaScript, sem build). A consulta
 é feita em tempo real na API pública do Observatório da Pós-Graduação da CAPES, que libera CORS.
@@ -106,10 +106,9 @@ O PDF é de responsabilidade da CAPES e dos programas; vale a legislação de di
 
 ## Como publicar
 
-### Cloudflare (site publicado)
+### Cloudflare Pages (site publicado)
 
-O site está no ar em **<https://capes-eduensino.gerlanmatfis.workers.dev>** — Cloudflare
-Workers com assets estáticos (o Pages novo é integrado ao Workers).
+O site está no ar em **<https://capesquisa.pages.dev>**.
 
 Para republicar:
 
@@ -122,7 +121,7 @@ CAPES_PDF_API='https://seu-tunel-ou-servico' ./scripts/deploy-cloudflare.sh
 ```
 
 O script monta um diretório temporário apenas com o site, injeta a URL do PDF em
-`assets/config.js` e roda `wrangler deploy` no projeto `capes-eduensino`.
+`assets/config.js` e roda `wrangler pages deploy` no projeto Pages `capesquisa` (branch `main`).
 
 A publicação atual usa um **Cloudflare Tunnel temporário** para o PDF: o site no Workers é
 permanente, mas o PDF depende do `server.py` e do túnel estarem no ar. Se o túnel reiniciar,
