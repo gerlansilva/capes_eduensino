@@ -5,6 +5,9 @@ com os dados do Catálogo de Teses e Dissertações da CAPES.
 
 **Repositório:** <https://github.com/gerlansilva/capes_eduensino>
 
+Projeto independente de **Gerlan Silva da Silva** ([@gerlansilva](https://github.com/gerlansilva)),
+sem vínculo institucional com a CAPES.
+
 A busca, os filtros e os cartões são **estáticos** (HTML + CSS + JavaScript, sem build). A consulta
 é feita em tempo real na API pública do Observatório da Pós-Graduação da CAPES, que libera CORS.
 O único componente com servidor é o **PDF** (`server.py`), porque o anexo fica atrás de um formulário
@@ -214,5 +217,6 @@ encaminha o anexo disponibilizado pela própria CAPES.
 
 ## Aviso
 
-Projeto independente, sem vínculo institucional com a CAPES. O uso das informações está sujeito
-à Lei nº 9.610/1998 (direitos autorais).
+Este é um projeto independente de **Gerlan Silva da Silva**
+([@gerlansilva](https://github.com/gerlansilva)), sem vínculo institucional com a CAPES.
+O uso das informações está sujeito à Lei nº 9.610/1998 (direitos autorais).
