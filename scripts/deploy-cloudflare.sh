@@ -16,12 +16,13 @@ cp -R "$ROOT/assets" "$DIST/public/assets"
 if [ -n "${CAPES_PDF_API:-}" ]; then
   printf "window.CAPES_PDF_API = '%s';\n" "$CAPES_PDF_API" > "$DIST/public/assets/config.js"
   python3 - "$DIST/public/index.html" <<'PY'
-import sys, time
+import re, sys, time
 caminho = sys.argv[1]
 texto = open(caminho, encoding='utf-8').read()
-texto = texto.replace(
-    'assets/config.js?v=20261018g',
+texto = re.sub(
+    r'assets/config\.js\?v=[^"]+',
     'assets/config.js?v=%d' % int(time.time()),
+    texto,
 )
 open(caminho, 'w', encoding='utf-8').write(texto)
 PY

@@ -99,6 +99,12 @@ function urlPdf(item) {
 }
 
 async function verificarPdfApi() {
+  // Com um servidor de PDF configurado (Render, túnel etc.), não escondemos o
+  // botão se o health check falhar: o serviço pode estar apenas "dormindo".
+  if (PDF_API) {
+    estado.pdfApi = true;
+    return;
+  }
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), 1500);
   try {

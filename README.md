@@ -123,9 +123,11 @@ CAPES_PDF_API='https://seu-tunel-ou-servico' ./scripts/deploy-cloudflare.sh
 O script monta um diretório temporário apenas com o site, injeta a URL do PDF em
 `assets/config.js` e roda `wrangler pages deploy` no projeto Pages `capesquisa` (branch `main`).
 
-A publicação atual usa um **Cloudflare Tunnel temporário** para o PDF: o site no Workers é
-permanente, mas o PDF depende do `server.py` e do túnel estarem no ar. Se o túnel reiniciar,
-rode o script com a nova URL. Para PDF permanente, use o Render abaixo ou um túnel nomeado.
+A publicação atual usa o **Render** para o PDF (`https://capes-eduensino-pdf.onrender.com`):
+o site no Cloudflare Pages é permanente e o PDF não depende da máquina local. O plano gratuito
+do Render hiberna após um período sem uso; a primeira consulta pode demorar para acordar, mas
+o botão **PDF** continua visível — quando `CAPES_PDF_API` está configurado, o app confia no
+serviço em vez de esconder o botão.
 
 ### PDF no Render (recomendado com Cloudflare Pages)
 
@@ -133,13 +135,14 @@ rode o script com a nova URL. Para PDF permanente, use o Render abaixo ou um tú
    O `render.yaml` já traz a configuração: runtime Python, `startCommand: python3 server.py`
    e health check em `/api/health`.
 2. Copie a URL do serviço (ex.: `https://capes-eduensino-pdf.onrender.com`).
-3. Em `assets/config.js`, preencha:
+3. Publique o Pages passando a URL do Render (o script injeta em `assets/config.js`):
 
-```js
-window.CAPES_PDF_API = 'https://capes-eduensino-pdf.onrender.com';
+```bash
+CAPES_PDF_API='https://capes-eduensino-pdf.onrender.com' ./scripts/deploy-cloudflare.sh
 ```
 
-4. Publique o Pages novamente. O site continua no Cloudflare; só o PDF é resolvido no Render.
+4. O site continua no Cloudflare; só o PDF é resolvido no Render. Para uso local, também é
+   possível preencher `window.CAPES_PDF_API` em `assets/config.js`.
 
 O `server.py` também serve o site inteiro — a página de espera do PDF usa os assets
 (`/assets/...`) do próprio serviço. O plano gratuito do Render hiberna; a primeira consulta
