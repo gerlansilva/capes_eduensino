@@ -6,7 +6,7 @@ com os dados do Catálogo de Teses e Dissertações da CAPES.
 **Repositório:** <https://github.com/gerlansilva/capes_eduensino>
 
 Projeto independente de **Gerlan Silva da Silva** ([@gerlansilva](https://github.com/gerlansilva)),
-sem vínculo institucional com a CAPES.
+doutorando em Educação no **PPGE da UFSCar**. Não é um projeto oficial da CAPES nem da UFSCar.
 
 A busca, os filtros e os cartões são **estáticos** (HTML + CSS + JavaScript, sem build). A consulta
 é feita em tempo real na API pública do Observatório da Pós-Graduação da CAPES, que libera CORS.
@@ -218,5 +218,6 @@ encaminha o anexo disponibilizado pela própria CAPES.
 ## Aviso
 
 Este é um projeto independente de **Gerlan Silva da Silva**
-([@gerlansilva](https://github.com/gerlansilva)), sem vínculo institucional com a CAPES.
+([@gerlansilva](https://github.com/gerlansilva)), doutorando em Educação no PPGE da UFSCar.
+Não possui vínculo institucional com a CAPES nem com a UFSCar.
 O uso das informações está sujeito à Lei nº 9.610/1998 (direitos autorais).
