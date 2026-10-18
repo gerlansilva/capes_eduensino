@@ -9,6 +9,8 @@ Projeto independente de **Gerlan Silva da Silva** ([@gerlansilva](https://github
 doutorando em Educação no **Programa de Pós-Graduação em Educação (PPGE)** da
 **Universidade Federal de São Carlos (UFSCar)**. Não é um projeto oficial da CAPES nem da UFSCar.
 
+**Site publicado:** <https://capes-eduensino.gerlanmatfis.workers.dev>
+
 A busca, os filtros e os cartões são **estáticos** (HTML + CSS + JavaScript, sem build). A consulta
 é feita em tempo real na API pública do Observatório da Pós-Graduação da CAPES, que libera CORS.
 O único componente com servidor é o **PDF** (`server.py`), porque o anexo fica atrás de um formulário
@@ -104,21 +106,27 @@ O PDF é de responsabilidade da CAPES e dos programas; vale a legislação de di
 
 ## Como publicar
 
-### Cloudflare Pages (site)
+### Cloudflare (site publicado)
 
-O front-end é estático. No painel do Cloudflare Pages:
+O site está no ar em **<https://capes-eduensino.gerlanmatfis.workers.dev>** — Cloudflare
+Workers com assets estáticos (o Pages novo é integrado ao Workers).
 
-- **Build command:** nenhum (deixe vazio)
-- **Output directory:** `/` (a raiz do repositório)
-
-Ou, pelo terminal:
+Para republicar:
 
 ```bash
-npx wrangler pages deploy .
+# com PDF servido por um túnel ou pelo Render
+CAPES_PDF_API='https://seu-tunel-ou-servico' ./scripts/deploy-cloudflare.sh
+
+# só o site estático (sem botão de PDF)
+./scripts/deploy-cloudflare.sh
 ```
 
-O site funciona, mas o **PDF não**: o Pages não executa Python. Sem um servidor de PDF,
-o `/api/health` responde 404 e o botão de PDF simplesmente não aparece.
+O script monta um diretório temporário apenas com o site, injeta a URL do PDF em
+`assets/config.js` e roda `wrangler deploy` no projeto `capes-eduensino`.
+
+A publicação atual usa um **Cloudflare Tunnel temporário** para o PDF: o site no Workers é
+permanente, mas o PDF depende do `server.py` e do túnel estarem no ar. Se o túnel reiniciar,
+rode o script com a nova URL. Para PDF permanente, use o Render abaixo ou um túnel nomeado.
 
 ### PDF no Render (recomendado com Cloudflare Pages)
 
@@ -192,6 +200,7 @@ assets/ies.js           cadastro de IES, grupos de UF/região/dependência e pro
 assets/config.js        URL do serviço de PDF (Cloudflare Pages + Render/Tunnel)
 server.py               servidor local + resolução/download do PDF
 tools/build_ies.py      regenera assets/ies.js a partir da API
+scripts/deploy-cloudflare.sh  publica o estático no Workers (com PDF opcional)
 render.yaml             configuração do Web Service no Render
 requirements.txt        sem dependências (biblioteca padrão)
 assets/logo-512.webp    selo em WebP (usado na interface)
